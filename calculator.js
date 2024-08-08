@@ -1,9 +1,9 @@
 let displayValue = "0";
 
-let storedNumber1 = 0;
+let storedNumber1;
 let enteredFirstNumber = false;
 let operationDone = true;
-let storedNumber2 = 0;
+let storedNumber2;
 let storedOperation = "";
 
 const result = document.querySelector(".result-input");
@@ -51,7 +51,21 @@ function divide(number1, number2)
 function operate()
 {
     let operationResult = 0;
-    storedNumber2 = displayValue;
+    if(storedOperation === undefined)
+    {
+        return;
+    }
+
+    if(storedNumber2 === undefined)
+    {
+        storedNumber2 = storedNumber1;
+    }
+    else
+    {
+        storedNumber2 = displayValue;
+    }
+    
+    
     switch (storedOperation) {
         case "add":
             operationResult = add(storedNumber1, storedNumber2);
@@ -93,9 +107,9 @@ function clearDisplay(){
     enteredFirstNumber = false;
     operationDone = true;
 
-    storedNumber1 = 0;
-    storedNumber2 = 0;
-    storedOperation = "";
+    storedNumber1 = undefined;
+    storedNumber2 = undefined;
+    storedOperation = undefined;
 }
 
 function operatorButton(operator){
