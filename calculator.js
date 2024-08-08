@@ -1,4 +1,4 @@
-let displayValue = "0";
+let displayValue;
 
 let storedNumber1;
 let enteredFirstNumber = false;
@@ -30,33 +30,42 @@ const divBtn = document.querySelector("#divBtn").addEventListener("click", funct
 
 function add(number1, number2)
 {
-    return +number1 + +number2
+    return +number1 + +number2;
 }
 
 function subtract(number1, number2)
 {
-    return +number1 - +number2
+    return +number1 - +number2;
 }
 
 function multiply(number1, number2)
 {
-    return +number1 * +number2
+    return +number1 * +number2;
 }
 
 function divide(number1, number2)
 {
-    return +number1 / +number2
+    if(number2 == 0)
+    {
+        return "DURCH NULL GETEILT!"
+    }
+    else
+    {
+        return +number1 / +number2;
+    }
+    
 }
 
 function operate()
 {
+    
     let operationResult = 0;
     if(storedOperation === undefined)
     {
         return;
     }
 
-    if(storedNumber2 === undefined)
+    if(storedNumber2 === undefined && operationDone)
     {
         storedNumber2 = storedNumber1;
     }
